@@ -1,9 +1,9 @@
-import { lusitana } from "../ui/fonts";
-import { fetchRevenue, fetchLatestInvoices } from "../lib/data";
-import RevenueChart from "../ui/dashboard/revenue-chart";
-import LatestInvoices from "../ui/dashboard/latest-invoices";
-import { Card } from "../ui/dashboard/cards";
-import { fetchCardData } from "../lib/data";
+import { lusitana } from "../../ui/fonts";
+import { fetchRevenue, fetchLatestInvoices } from "../../lib/data";
+import RevenueChart from "../../ui/dashboard/revenue-chart";
+import LatestInvoices from "../../ui/dashboard/latest-invoices";
+import { Card } from "../../ui/dashboard/cards";
+import { fetchCardData } from "../../lib/data";
 
 export default async function page() {
     const revenue = await fetchRevenue();
