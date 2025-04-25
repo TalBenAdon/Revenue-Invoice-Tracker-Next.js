@@ -4,6 +4,7 @@ import {
   CustomersTableType,
   InvoiceForm,
   InvoicesTable,
+  LatestInvoice,
   LatestInvoiceRaw,
   Revenue,
 } from './definitions';
@@ -30,6 +31,8 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
+
+    await new Promise((resolve)=> setTimeout(resolve,2500));
     const data = await sql<LatestInvoiceRaw[]>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -37,7 +40,7 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
-    const latestInvoices = data.map((invoice) => ({
+    const latestInvoices: LatestInvoice[] = data.map((invoice) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }));
